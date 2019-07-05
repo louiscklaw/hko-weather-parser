@@ -52,16 +52,15 @@ def test_get_uv_intensity():
         print('test getUVIntensity fail')
         print(result)
 
-def test_get_uv_with_uv_in_xml():
-    report = hkoCurrentWeatherReport(test_uv_report)
-    expected_UV_reading = 'high'
+def test_get_uv_without_uv_in_xml():
+    report = hkoCurrentWeatherReport(test_uv_without_uv_xml)
+    expected_UV_reading = 'very high'
     result = report.getUVIntensity()
     if expected_UV_reading == result:
-        print('test getUVIntensity ok')
+        print('test test_get_uv_without_uv_in_xml ok')
     else:
-        print('test getUVIntensity fail')
+        print('test test_get_uv_without_uv_in_xml fail')
         print(result)
-
 
 def test_get_last_update():
     report = hkoCurrentWeatherReport(test_uv_report)
@@ -80,6 +79,7 @@ test_get_air_temperature,
 test_get_uv,
 test_get_uv_intensity,
 test_get_last_update,
+test_get_uv_without_uv_in_xml,
 ]
 
 
