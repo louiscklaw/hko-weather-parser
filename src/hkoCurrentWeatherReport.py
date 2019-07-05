@@ -70,10 +70,32 @@ class hkoCurrentWeatherReport:
             print(self.str_rss)
             raise e
 
+    def getUVReading(self):
+        try:
+            humid_mask = 'UV Index recorded at King\'s Park : (\d+)<br/>'
+            return self.reGetText(self.str_rss, humid_mask)
+        except Exception as e:
+            print(self.str_rss)
+            raise e
+
+    def getUVIntensity(self):
+        try:
+            humid_mask = 'Intensity of UV radiation : (\w+)<br/>'
+            return self.reGetText(self.str_rss, humid_mask)
+        except Exception as e:
+            print(self.str_rss)
+            raise e
+
+    def getLastUpdate(self):
+        try:
+            info_mask = 'At.+\n +(.+) \n.+ at'
+            return self.reGetText(self.str_rss, info_mask)
+        except Exception as e:
+            pass
+
     def getDistrictList(self):
         info_mask = '<tr><td><font size="-1">(.+)</font></td>.+</tr>'
         ms=re.findall(info_mask, self.str_rss)
-        ms = sorted(ms)
 
         return ms
 
