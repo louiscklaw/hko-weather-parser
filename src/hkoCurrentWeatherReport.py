@@ -46,6 +46,21 @@ class hkoCurrentWeatherReport:
             print(district)
             raise e
 
+    def reGetText(self, input_text, mask):
+        try:
+            ms=re.findall(mask, input_text)
+            return self.html_unescape(ms[0])
+        except Exception as e:
+            print(input_text)
+            raise e
+
+    def getHumidity(self):
+        try:
+            humid_mask = 'Relative Humidity : (\d+) per cent<br/>'
+            return self.reGetText(self.str_rss, humid_mask)
+        except Exception as e:
+            print(self.str_rss)
+            raise e
 
     def getDistrictList(self):
         info_mask = '<tr><td><font size="-1">(.+)</font></td>.+</tr>'
@@ -78,8 +93,8 @@ class hkoCurrentWeatherReport:
             except Exception as e:
                 print(target_district)
                 raise(e)
-                sys.exit()
-                pass
+
+
 
         return self.district_report
 
