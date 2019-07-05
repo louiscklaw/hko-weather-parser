@@ -30,10 +30,30 @@ def test_get_humidity():
     expected_humidity = '82'
     result = report.getHumidity()
     if expected_humidity == result:
-        print('test humidity ok')
+        print('test getHumidity ok')
     else:
-        print('test humidity fail')
+        print('test getHumidity fail')
         print(result)
 
-test_get_district_weather()
-test_get_humidity()
+def test_get_air_temperature():
+    report = hkoCurrentWeatherReport(test_rss_report)
+    expected_air_temp = '29'
+    result = report.getAirTemperature()
+    if expected_air_temp == result:
+        print('test getAirTemperature ok')
+    else:
+        print('test getAirTemperature fail')
+        print(result)
+
+test_list =[
+test_get_district_weather,
+test_get_humidity,
+test_get_air_temperature,
+]
+
+try:
+    for test_func in test_list:
+        test_func()
+except Exception as e:
+    raise e
+    pass

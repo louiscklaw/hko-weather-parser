@@ -62,6 +62,14 @@ class hkoCurrentWeatherReport:
             print(self.str_rss)
             raise e
 
+    def getAirTemperature(self):
+        try:
+            humid_mask = 'Air temperature : (\d+) degrees Celsius<br/>'
+            return self.reGetText(self.str_rss, humid_mask)
+        except Exception as e:
+            print(self.str_rss)
+            raise e
+
     def getDistrictList(self):
         info_mask = '<tr><td><font size="-1">(.+)</font></td>.+</tr>'
         ms=re.findall(info_mask, self.str_rss)
