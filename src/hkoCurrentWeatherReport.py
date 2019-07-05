@@ -10,7 +10,9 @@ from config import *
 str_temp = ''
 
 class hkoCurrentWeatherReport:
-    str_rss = '';
+    str_rss = ''
+    # weather_dict = {}
+    district_report = {}
 
     def _readRssFile(self,filepath):
         with open(filepath,'r') as f:
@@ -48,7 +50,6 @@ class hkoCurrentWeatherReport:
     def getDistrictList(self):
         info_mask = '<tr><td><font size="-1">(.+)</font></td>.+</tr>'
         ms=re.findall(info_mask, self.str_rss)
-
         ms = sorted(ms)
 
         return ms
@@ -65,32 +66,22 @@ class hkoCurrentWeatherReport:
     def getDistrictReports(self):
         district_list = self.getDistrictList()
 
-        district_report = {}
+
         for target_district in district_list:
             try:
                 (rain, temp) = self.getDistrictReport(target_district)
                 temp_d = {}
                 temp_d[DICT_RAIN_NAME] = rain
                 temp_d[DICT_TEMP_NAME] = temp
-                district_report[target_district]=temp_d
-                pass
+                self.district_report[target_district]=temp_d
+
             except Exception as e:
                 print(target_district)
                 raise(e)
                 sys.exit()
                 pass
 
-        return district_report
+        return self.district_report
 
     def helloworld(self):
         pass
-
-
-
-
-test_rss_report = './dummy-html/currentweather.xml'
-
-report = hkoCurrentWeatherReport(test_rss_report)
-
-from pprint import pprint
-pprint(report.getDistrictReports())
