@@ -73,13 +73,13 @@ def test_get_last_update():
         print(result)
 
 test_list =[
-test_get_district_weather,
-test_get_humidity,
-test_get_air_temperature,
-test_get_uv,
-test_get_uv_intensity,
-test_get_last_update,
-test_get_uv_without_uv_in_xml,
+    test_get_district_weather,
+    test_get_humidity,
+    test_get_air_temperature,
+    test_get_uv,
+    test_get_uv_intensity,
+    test_get_last_update,
+    test_get_uv_without_uv_in_xml,
 ]
 
 
