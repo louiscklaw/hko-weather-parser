@@ -103,6 +103,15 @@ class weather_forecast:
         else:
             raise e
 
+    def test_get_indiviual_date():
+        hko=weather_forecast._get_new_hko_obj()
+        for i in range(0,8):
+            print('trying date %d' % i)
+            hko.get_indiviual_date(i)
+
+        print("test ok")
+
+
 current_weather_report_test_list =[
     test_get_district_weather,
     test_get_humidity,
@@ -118,6 +127,7 @@ weather_forecast_list = [
     weather_forecast.test_read_file,
     weather_forecast.test_extract_content,
     weather_forecast.test_extract_date,
+    weather_forecast.test_get_indiviual_date,
 ]
 
 try:

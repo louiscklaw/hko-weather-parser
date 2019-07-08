@@ -30,3 +30,6 @@ class hkoWeatherForecast:
     def extract_date(self):
         ms = re.findall("Date/Month.+?Cent<br", self.str_rss, re.DOTALL)
         return ms
+
+    def get_indiviual_date(self, date_advance):
+        return self.extract_date()[date_advance]
