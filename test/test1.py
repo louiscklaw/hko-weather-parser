@@ -111,6 +111,30 @@ class weather_forecast:
 
         print("test ok")
 
+    def test_get_wind():
+        hko=weather_forecast._get_new_hko_obj()
+        for i in range(0,8):
+            from pprint import pprint
+            pprint(hko.get_wind(i))
+
+    def test_get_weather():
+        hko=weather_forecast._get_new_hko_obj()
+        for i in range(0,8):
+            from pprint import pprint
+            pprint(hko.get_weather(i))
+
+    def test_get_temp_range():
+        hko=weather_forecast._get_new_hko_obj()
+        for i in range(0,8):
+            from pprint import pprint
+            pprint(hko.get_temp_range(i))
+
+    def test_get_rh_range():
+        hko=weather_forecast._get_new_hko_obj()
+        for i in range(0,8):
+            from pprint import pprint
+            pprint(hko.get_rh_range(i))
+
 
 current_weather_report_test_list =[
     test_get_district_weather,
@@ -128,6 +152,10 @@ weather_forecast_list = [
     weather_forecast.test_extract_content,
     weather_forecast.test_extract_date,
     weather_forecast.test_get_indiviual_date,
+    weather_forecast.test_get_wind,
+    weather_forecast.test_get_weather,
+    weather_forecast.test_get_temp_range,
+    weather_forecast.test_get_rh_range,
 ]
 
 try:
@@ -139,6 +167,8 @@ try:
     print("\n\ntesting weather forecast")
     for test_func in weather_forecast_list:
         test_func()
+
+
 
 except Exception as e:
     raise e
